@@ -73,7 +73,7 @@ void sharpnessFilter(Mat &src, Mat & res) {
 
 int main(int argc, char* argv[])
 {
-	std::string image_path = "pictures/res.jpg";
+	std::string image_path = "pictures/Capture.png";
 	Mat img = imread(image_path, CV_BGR2GRAY);
 	//cvtColor(img, img, CV_BGR2GRAY);
 
@@ -84,8 +84,14 @@ int main(int argc, char* argv[])
 	}
 
 	Mat res(img);
+
+	std::cout << "Median filter has started work" << std::endl;
 	medianFilter(img, res);
-	//sharpnessFilter(img, res);
+	std::cout << "Median filter has finished work" << std::endl;
+
+	std::cout << "Sharpness filter has started work" << std::endl;
+	sharpnessFilter(img, res);
+	std::cout << "Sharpness filter has finished work" << std::endl;
 
 	imwrite("pictures/res.jpg", res);
 	return 0;
